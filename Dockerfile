@@ -22,7 +22,9 @@ WORKDIR /app
 COPY --from=build /app/out .
 
 # Expose ports
+ENV ASPNETCORE_URLS=http://+:80
 EXPOSE 80
+ENV ASPNETCORE_URLS=http://+:443
 EXPOSE 443
 
 ENTRYPOINT ["dotnet", "SME_Ecotech2A.API.dll"]
