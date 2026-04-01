@@ -8,11 +8,16 @@
 
   <ItemGroup>
     <PackageReference Include="Swashbuckle.AspNetCore" Version="6.6.2" />
+    <PackageReference Include="Microsoft.AspNetCore.Authentication.JwtBearer" Version="8.0.13" />
   </ItemGroup>
 
   <ItemGroup>
     <ProjectReference Include="..\SME_Ecotech2A.Application\SME_Ecotech2A.Application.csproj" />
     <ProjectReference Include="..\SME_Ecotech2A.Infrastructure\SME_Ecotech2A.Infrastructure.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="Controllers\" />
   </ItemGroup>
 
 </Project>
