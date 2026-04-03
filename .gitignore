@@ -402,6 +402,7 @@ FodyWeavers.xsd
 /.idea/
 
 .env
+mysql-data/
 SME_Ecotech2A.API/Properties/launchSettings.json
 SME_Ecotech2A.API/appsettings.json
 appsettings*.json
