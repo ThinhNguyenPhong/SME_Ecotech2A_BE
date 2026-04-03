@@ -4,9 +4,9 @@ using Task = SME_Ecotech2A.Domain.Entity.Task;
 
 namespace SME_Ecotech2A.Infrastructure.Persistence
 {
-    public class DbContext : Microsoft.EntityFrameworkCore.DbContext
+    public class AppDBContext : DbContext
     {
-        public DbContext(DbContextOptions<DbContext> options) : base(options)
+        public AppDBContext(DbContextOptions<AppDBContext> options) : base(options)
         {
         }
 
@@ -40,7 +40,7 @@ namespace SME_Ecotech2A.Infrastructure.Persistence
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             base.OnModelCreating(modelBuilder);
-            modelBuilder.ApplyConfigurationsFromAssembly(typeof(DbContext).Assembly);
+            modelBuilder.ApplyConfigurationsFromAssembly(typeof(AppDBContext).Assembly);
         }
     }
 }

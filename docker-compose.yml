@@ -1,5 +1,23 @@
 version: "3.8"
 services:
+  mysql:
+    image: mysql:8.0
+    restart: unless-stopped
+    ports:
+      - "3306:3306"
+    env_file:
+      - .env
+    environment:
+      - MYSQL_ROOT_PASSWORD=${MYSQL_ROOT_PASSWORD}
+      - MYSQL_DATABASE=${MYSQL_DATABASE}
+      - MYSQL_USER=${MYSQL_USER}
+      - MYSQL_PASSWORD=${MYSQL_PASSWORD}
+    volumes:
+      - ./mysql-data:/var/lib/mysql
+    user: root
+    networks:
+      - app-network
+
   backend:
     build:
       context: .
@@ -20,3 +38,11 @@ services:
       - /etc/letsencrypt/live/bemodernestate.site/fullchain.pem:/https/fullchain.pem:ro
       - /etc/letsencrypt/live/bemodernestate.site/privkey.pem:/https/privkey.pem:ro
     user: root
+    depends_on:
+      - mysql
+    networks:
+      - app-network
+
+networks:
+  app-network:
+    driver: bridge

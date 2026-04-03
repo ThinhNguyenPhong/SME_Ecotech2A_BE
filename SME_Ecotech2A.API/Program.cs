@@ -1,3 +1,5 @@
+using Microsoft.Extensions.Configuration;
+using Microsoft.Extensions.Hosting;
 using SME_Ecotech2A.Api;
 using SME_Ecotech2A.Api.Middleware;
 using SME_Ecotech2A.Application;
@@ -5,13 +7,12 @@ using SME_Ecotech2A.Infrastructure;
 
 var builder = WebApplication.CreateBuilder(args);
 
-// Add services to the container.
 
 
 builder.Services
     .AddApi(builder.Configuration)
     .AddApplication()
-    .AddInfrastructure();
+    .AddInfrastructure(builder.Configuration);
 var app = builder.Build();
 
 
